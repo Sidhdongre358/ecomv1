@@ -1,0 +1,62 @@
+server:
+  port: 8080
+spring:
+  application:
+    name: API-GATEWAY
+  cloud:
+    gateway:
+
+      # USER-SERVICE
+      routes:
+        - id: user-service
+          uri: lb://USER-SERVICE
+          predicates:
+            - Path=/api/auth/**
+
+        # FAVOURITE-SERVICE
+        - id: favourite-service
+          uri: lb://FAVOURITE-SERVICE
+          predicates:
+            - Path=/api/favourites/**
+        # work around the swagger doc Creating new routes for swagger
+
+        - id: favourite-service-docs
+          uri: lb://FAVOURITE-SERVICE
+          predicates:
+            - Path=/v3/api-docs/f
+        #
+        - id: user-service-docs
+          uri: lb://USER-SERVICE
+          predicates:
+            - Path=/v3/api-docs/user-service
+#
+
+
+
+
+
+
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: ${EUREKA_URI:http://localhost:8761/eureka}
+
+logging:
+  level:
+    root: INFO
+
+
+
+
+
+# Spring doc OpenAPI Swagger Configuration
+springdoc:
+  swagger-ui:
+    urls:
+      - name: User Service - Auth
+        url: /v3/api-docs/user-service  # path should be same with Micro service
+      - name: favourite service
+        url: /v3/api-docs/f
+    path: /swagger-ui.html
+  api-docs:
+    path: /v3/api-docs
