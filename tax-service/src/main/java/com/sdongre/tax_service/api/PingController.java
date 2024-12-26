@@ -8,10 +8,10 @@ import org.springframework.web.bind.annotation.RestController;
 import java.util.Map;
 
 @RestController
-@RequestMapping("/api/ping/tax_service")
+@RequestMapping("/api/tax/")
 public class PingController {
 
-    @GetMapping
+    @GetMapping("/ping")
     public Map<String, String> ping() {
         return Map.of(
                 "status", "UP",
