@@ -167,6 +167,7 @@ springdoc:
     urls:
       - name: User Service - Auth
         url: /v3/api-docs/user-service
+#        url: /v3/api-docs/user-service
       - name: Favourite Service
         url: /v3/api-docs/f
       - name: Inventory Service
