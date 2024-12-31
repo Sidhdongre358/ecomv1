@@ -1,4 +1,4 @@
-package com.sdongre.user_service.security.jwt;
+package com.sdongre.order_service.security;
 
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServletRequest;
@@ -21,6 +21,7 @@ public class JwtEntryPoint implements AuthenticationEntryPoint {
                          HttpServletResponse response,
                          AuthenticationException authException)
             throws IOException, ServletException {
+
         logger.error("Unauthenticated error Message {}", authException.getMessage());
         response.sendError(HttpServletResponse.SC_ACCEPTED, "Error -> Unauthenticated");
     }

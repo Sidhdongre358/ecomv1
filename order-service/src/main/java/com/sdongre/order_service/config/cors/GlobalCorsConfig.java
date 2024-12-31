@@ -1,4 +1,4 @@
-package com.sdongre.favourite_service.config;
+package com.sdongre.order_service.config.cors;
 
 
 import org.springframework.beans.factory.annotation.Value;
@@ -8,14 +8,10 @@ import org.springframework.web.cors.CorsConfiguration;
 import org.springframework.web.cors.reactive.CorsWebFilter;
 import org.springframework.web.cors.reactive.UrlBasedCorsConfigurationSource;
 
-import java.util.Arrays;
-import java.util.List;
-
 @Configuration
 public class GlobalCorsConfig {
     @Value("${cors.allowed.origins}")
     private String[] allowedOrigins;
-
 
     @Bean
     public CorsWebFilter corsWebFilter() {
